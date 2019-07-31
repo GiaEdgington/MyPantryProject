@@ -4,10 +4,17 @@ class IngredientsController < ApplicationController
         @ingredients = Ingredient.all 
         render json: @ingredients
     end
+
+
     
     def create
         @ingredient = Ingredient.create(ingredient_params)
-        render json: @ingredient
+        temp = params[:user_id]
+        found = User.find(temp)
+        # render json: @ingredient
+        allIngredients = found.ingredients
+        render json: {ingredient: @ingredient, all: allIngredients}
+        
     end
 
 
