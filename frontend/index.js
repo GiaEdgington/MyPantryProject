@@ -9,16 +9,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const divOfRecipeTitles = document.querySelector('#list-panel');
     const divRecipeSummary = document.querySelector('#show-panel');
     const findRecipeButton = document.querySelector('#find-recipes');
-<<<<<<< HEAD
-
-    userForm.addEventListener('submit', function () {
-=======
     const ingredientUl = document.querySelector('#ingredientList');
     const hello = document.querySelector('.hello')
     const newNotepad = document.querySelector('.addIngredient')
     
     userForm.addEventListener('submit', function(){
->>>>>>> 4dc6f0f2b055f57f440dbee00e5d19cf1996eb3e
 
         event.preventDefault();
 
@@ -30,19 +25,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 "Content-type": "application/json",
                 "Accepts": "application/json"
             },
-<<<<<<< HEAD
-            body: JSON.stringify(
-                {name: userName}
-            )
-        }).then(response => response.json()).then(user => addToPantry(user))
-=======
             body: JSON.stringify({
                 name: userName
             })
         })
         .then(response => response.json())
         .then(data=> addToPantryMode(data))
->>>>>>> 4dc6f0f2b055f57f440dbee00e5d19cf1996eb3e
     })
 
     function addToPantryMode(data){
@@ -62,58 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
         addIngredient = !addIngredient
 
-<<<<<<< HEAD
-    function addToPantry(user) {
-        newUser = ! newUser
-        if (newUser) {
-            userForm.style.display = "block"
-        } else {
-            userForm.style.display = "none"
-        }
-
-        addIngredient = ! addIngredient
-        if (addIngredient) {
-=======
         if ( addIngredient ){
->>>>>>> 4dc6f0f2b055f57f440dbee00e5d19cf1996eb3e
             ingredientForm.style.display = "none"
         } else {
             ingredientForm.style.display = "block"
         }
-<<<<<<< HEAD
-        ingredientForm.addEventListener('submit', function () {
-            event.preventDefault()
-            let ingredient = ingredientForm.querySelector('input').value
-
-            fetch("http://localhost:3000/ingredients", {
-                method: "POST",
-                headers: {
-                    "Content-type": "application/json",
-                    "Accepts": "application/json"
-                },
-                body: JSON.stringify(
-                    {name: ingredient, user_id: user.id}
-                )
-            }).then(response => response.json()).then(data => displayIngredients(data, user));
-        })
-    }
-
-
-    function displayIngredients(ingredient) {
-
-        let ingUl = document.querySelector('#ing-list');
-        let ingredientLi = document.createElement('li');
-        ingredientLi.innerText = `${
-            ingredient.ingredient.name
-        }` ingUl.append(ingredientLi);
-
-        findRecipeButton.addEventListener('click', function () {
-            let myIngredients = `${
-                user.ingredients.name
-            }` console.log(myIngredients);
-            // let allIngredients = ingredient.all
-            // findRecipes(allIngredients)
-=======
 
         hello.innerText=`Hello, ${data.user.name}!
         Add ingredients to your pantry!`
@@ -169,13 +110,9 @@ document.addEventListener('DOMContentLoaded', function () {
         let ingredArray = [];
         userIngredients.forEach((ingredient) => {
             ingredArray.push(ingredient.name)
->>>>>>> 4dc6f0f2b055f57f440dbee00e5d19cf1996eb3e
         })
 
-<<<<<<< HEAD
-=======
         getRecipesByIngredients(ingredArray.join(','));
->>>>>>> 4dc6f0f2b055f57f440dbee00e5d19cf1996eb3e
 
     // function findRecipes(allIngredients){
     // console.log(allIngredients)
@@ -187,38 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ---- DISPLAY WITH SUMMARY ---- //
 
-<<<<<<< HEAD
-    //     ulOfRecipeTitles.addEventListener('click', function(event){
-    //         let id = event.target.dataset.id;
-    //         console.log(event.currentTarget)
-
-    //         getSummarizeRecipe(id);
-    //     })
-
-    // function getSummarizeRecipe(id){
-    //     fetch(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${key}`)
-    //     .then(response => response.json())
-    //     .then(details => renderDetails(details))
-    // }
-
-    // function renderDetails(details){
-    //     console.log(details);
-
-    //     divRecipeSummary.innerHTML =  `
-    //     <h2>${details.title}</h2>
-    //     <p>${details.summary}</p>
-    //     <button>Save</button
-    //     `
-    // }
-
-    // function getRecipesByIngredients(ingredients){
-
-    //     fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${key}&ingredients=${ingredients}`)
-    //     .then(response => response.json())
-    //     .then(results => renderRecipeTitles(results))
-    // }
-=======
-    
+    }
 
     function getRecipesByIngredients(ingredients){
     
@@ -226,7 +132,6 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(results => renderRecipeTitles(results))
     }
->>>>>>> 4dc6f0f2b055f57f440dbee00e5d19cf1996eb3e
 
     function renderRecipeTitles(results){
         results.forEach(result => {
