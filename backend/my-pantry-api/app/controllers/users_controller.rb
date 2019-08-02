@@ -5,23 +5,22 @@ class UsersController < ApplicationController
         render json: @users, include: :ingredients
     end
 
-    def show
-        @user = User.find(params[:id])
-        @ingredients = @user.ingredients
-    end
-
     def create
-        @user = User.create(user_params)
+        #is there a way to get the children records (ingredients) for the user in one call here:
+        @user = User.find_by name: params[:name]
+        if @user.nil?
+            @user = User.create(user_params)
+        end
 
-        render json: @user
+        pantry = Ingredient.all.select { |ingredient| ingredient.user_id == @user.id }
+
+        render json: { user: @user, pantry: pantry }
     end
 
     def show
         @user = User.find(params[:id])
         render json: @user
     end
-
-
 
     private
 
