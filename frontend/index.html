@@ -3,30 +3,37 @@
 <head>
   <meta charset="utf-8">
   <title>My Pantry</title>
+  <link href="https://fonts.googleapis.com/css?family=Crimson+Pro&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <h1>My Pantry</h1>
     <div>
         <form id="userForm">
-        <h3>Sign in with your name</h3>
-        Name: <input type="text" name="name"><br>
-        <input type="submit" value="Submit">
+        <h4>Your name:</h4>
+        <input class="userinput" type="text" name="name"><br>
+        <input class="submit" style="margin-top:20px" type="submit" value="Submit">
         </form>
-    </div> 
+    </div>
 
-    <div>
+    <div class="addIngredient">
             <form id="ingredientForm">
-            <h2>Add ingredients to your pantry!</h2>
-            Ingredient: <input type="text" name="name"><br>
-            <input type="submit" value="Submit">
+            <h2 class="hello"></h2>
+            <input class="ingredientInput" type="text" name="name"><br>
+            <input class="submitIng" type="submit" value="Submit">
             </form>
+
+            <div id="my-pantry">
+            <ul id="ingredientList">
+            </ul>
+    </div>
     </div>
     
-    <ul id="ing-list">
-    </ul>
-
-    <button id="find-recipes">Search</button>
+    
+    
+    <div id="button-search">
+    <button id="find-recipes">FIND RECIPES!</button>
+    </div>
+    
     <div id="list-panel">
       <ul id="list">
 
@@ -34,8 +41,6 @@
     </div>
 
     <div id="show-panel"></div>
-
-    
 </body>
 <script type="text/javascript" src="index.js"></script>
 </html>

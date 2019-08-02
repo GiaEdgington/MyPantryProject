@@ -1,3 +1,199 @@
 #ingredientForm {
     display: none;
 }
+html {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+body {
+    font-family: 'Crimson Pro', serif;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-image: url("images/background.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    width: 50%;
+    padding: 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 4em;
+}
+
+.userinput {
+    width: 12em;
+    height: 2em;
+    border-radius: 18px;
+    border-width:1px;
+    border-style: solid;
+    font-size: 80%;
+    text-align: center;
+}
+
+.submit {
+    display: inline-block;
+    padding: 0.7em 2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0;
+    border-radius:0.5em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-size: 1em;
+    font-weight:300;
+    background-color: greenyellow;
+    text-align:center;
+    transition: all 0.2s;
+}
+
+
+.ingredientInput {
+    padding: 1em 2em;
+    border-radius: 0.5em;
+}
+
+.submitIng {
+    margin-top: 1em;
+    padding: 0.5em 1em;
+    font-size: .85em;
+    border-radius: 0.35em;
+}
+
+/* .submit:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+    } */
+
+#my-pantry {
+    width: 80% !important;
+    clear: both;
+    height: 150px;
+    margin: -3em auto 0;
+    padding: 0;
+}
+
+#my-pantry ul {
+    width: 100%;
+    height: 75%;
+    margin: 1em auto 0;
+    text-align: center;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: stretch; /* Default */
+    justify-content: space-between;
+}
+
+#my-pantry li {
+    display: inline-block;
+    font-size: 1em;
+    padding: 3px;
+    flex: 0 1 auto; /* Default */
+    list-style-type: none;
+}
+
+#userForm {
+    width: 50%;
+    margin: 23em auto 0;
+    text-align: center;
+    padding: 3px;
+}
+
+.addIngredient {
+    
+}
+
+#ingredientForm {
+    width: 80%;
+    margin: -3em auto 0;
+    text-align: center;
+    padding: 0;
+}
+
+#my-pantry{
+    width: 100%;
+    margin: 0 auto;
+}
+
+#button-search {
+    display: none;
+    width: 30%;
+    margin: 0.5em auto 0;
+    text-align: center;
+}
+
+#find-recipes {
+    margin: 0;
+    font-size: 1em;
+    padding: .75em 2em;
+    border-radius: 0.5em;
+    background-color: greenyellow;
+    font-weight: bolder;
+}
+
+.recipe-card {
+    margin: 1em 0 0;
+    width: 250px;
+    height: auto;
+    background-color: white;
+    padding: 0.5em;
+    align-items: center;
+    align-content: center;
+    overflow: hidden;
+}
+
+.recipe-card:hover {
+    box-shadow: -1px 0px 11px -1px rgba(133,128,133,1);
+}
+
+
+.recipe-card h4 {
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.recipe-card img {
+    width: 100% !important;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+ul li {
+    list-style-type: none;
+    text-decoration: none;
+    list-style: none;
+}
+
+#list-panel {
+    margin: 0 auto;
+}
+
+#list {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding:5px;
+    margin: 0 auto;
+}
+
+#list li {
+    display: inline-block;
+    flex: 0 1 auto; /* Default */
+    margin:5px;
+}
