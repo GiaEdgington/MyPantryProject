@@ -102,9 +102,28 @@ document.addEventListener('DOMContentLoaded', function(){
     
     function displayIngredients(ingredient){
         let ingredientLi = document.createElement('li');
-        ingredientLi.innerText = `${ingredient.name}`
+        ingredientLi.innerHTML = `${ingredient.name}<br>
+        <input class="checkbox" type="checkbox">`
         ingredientUl.append(ingredientLi);
+
+        let checkedLi = ingredientLi.querySelector('.checkbox')
+        
+
+        checkedLi.addEventListener("change", function(){
+            let deleteBtn = document.querySelector('.btnDelete')
+            deleteBtn.addEventListener("click", function(){
+
+                fetch('http://localhost:3000/ingredients/' + ingredient.id, {
+                    method: "DELETE"
+                }).then(response => response.json())
+                .then(() => {
+                    ingredientLi.remove()
+                })
+            })
+        })
     }
+
+   
 
     function findRecipes(userIngredients){
         let ingredArray = [];
