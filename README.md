@@ -1,6 +1,5 @@
 ## My Pantry
-
-Forget what groceries you have at home, or just simply run out of ideas for what to cook with them? This app allows users to track their digital inventory of groceries and access recipes leveraging ingredients they already have. 
+This app allows users to track their digital inventory of groceries and access recipes leveraging ingredients they already have. 
 
 ## How It's Built
 
