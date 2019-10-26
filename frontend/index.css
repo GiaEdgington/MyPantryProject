@@ -39,6 +39,7 @@ h2 {
     border-style: solid;
     font-size: 80%;
     text-align: center;
+    outline: none;
 }
 
 .checkbox {
