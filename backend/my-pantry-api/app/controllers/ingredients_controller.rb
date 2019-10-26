@@ -12,6 +12,16 @@ class IngredientsController < ApplicationController
         render json: { name: @ingredient.name }
     end
 
+    def show
+        @ingredient = Ingredient.find(params[:id])
+        render json: @ingredient
+    end
+
+    def destroy
+        @ingredient = Ingredient.find(params[:id])
+        @ingredient.destroy
+    end
+
     private
     def ingredient_params
         params.require(:ingredient).permit(:name, :user_id)

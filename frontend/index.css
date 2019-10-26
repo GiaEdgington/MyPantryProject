@@ -41,6 +41,10 @@ h2 {
     text-align: center;
 }
 
+.checkbox {
+    display: inline;
+}
+
 .submit {
     display: inline-block;
     padding: 0.7em 2em;
@@ -54,6 +58,11 @@ h2 {
     background-color: greenyellow;
     text-align:center;
     transition: all 0.2s;
+}
+
+.submit:hover {
+    background-color: #f7a911;
+    color: white;
 }
 
 
@@ -105,23 +114,28 @@ h2 {
 
 #userForm {
     width: 50%;
-    margin: 23em auto 0;
+    margin: 33em auto 0;
     text-align: center;
     padding: 3px;
 }
 
-
-
 #ingredientForm {
     width: 80%;
-    margin: -3em auto 0;
+    margin: -5em auto 0;
     text-align: center;
     padding: 0;
+}
+
+.btnDelete {
+    float: right;
+    padding: 3px;
+    margin-top: 1em;
 }
 
 #my-pantry{
     width: 100%;
     margin: 0 auto;
+    padding-bottom: .5em;
 }
 
 #button-search {
@@ -181,7 +195,7 @@ ul li {
 }
 
 #list {
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;

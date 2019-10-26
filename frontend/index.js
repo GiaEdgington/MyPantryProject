@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newNotepad.style.backgroundColor="white"
         newNotepad.style.width="30%"
         newNotepad.style.height="400px;"
-        newNotepad.style.margin="2em auto 0"
+        newNotepad.style.margin="5em auto 0"
         newNotepad.style.paddingTop="1em"
 
         //Show Current Pantry
@@ -102,9 +102,28 @@ document.addEventListener('DOMContentLoaded', function () {
     
     function displayIngredients(ingredient){
         let ingredientLi = document.createElement('li');
-        ingredientLi.innerText = `${ingredient.name}`
+        ingredientLi.innerHTML = `${ingredient.name}<br>
+        <input class="checkbox" type="checkbox">`
         ingredientUl.append(ingredientLi);
+
+        let checkedLi = ingredientLi.querySelector('.checkbox')
+        
+
+        checkedLi.addEventListener("change", function(){
+            let deleteBtn = document.querySelector('.btnDelete')
+            deleteBtn.addEventListener("click", function(){
+
+                fetch('http://localhost:3000/ingredients/' + ingredient.id, {
+                    method: "DELETE"
+                }).then(response => response.json())
+                .then(() => {
+                    ingredientUl.remove(ingredientLi);
+                })
+            })
+        })
     }
+
+   
 
     function findRecipes(userIngredients){
         let ingredArray = [];
