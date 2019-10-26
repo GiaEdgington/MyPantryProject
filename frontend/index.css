@@ -113,6 +113,7 @@ h2 {
 }
 
 #userForm {
+    position: fixed;
     background-image: url('images/my_pantry.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -120,10 +121,16 @@ h2 {
     background-position-y: center;
     width: 50%;
     height: 100vh;
-    margin: auto;
-    text-align: center;
-    border: 1px red solid;
+    margin: auto 25%;
 }
+
+#form {
+    position: absolute;
+    width: 30%;
+    text-align: center;
+    margin: 30em 35%;
+}
+
 
 #ingredientForm {
     width: 80%;
@@ -215,3 +222,18 @@ ul li {
     flex: 0 1 auto; /* Default */
     margin:5px;
 }
+
+@media only screen and (max-width: 700px) {
+    #form {
+      margin-top: 27em;
+    }
+
+    .userinput {
+        width: 7em;
+    }
+
+    .submit {
+        padding: .5em 1em;
+        font-size: 0.7em;
+    }
+  }
