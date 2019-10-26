@@ -14,9 +14,9 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    background-image: url("images/background.jpg");
+    background-image: url("images/pantry_bg.jpg");
     background-size: 100%;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
 }
 
 h1 {
@@ -58,6 +58,11 @@ h2 {
     background-color: greenyellow;
     text-align:center;
     transition: all 0.2s;
+}
+
+.submit:hover {
+    background-color: #f7a911;
+    color: white;
 }
 
 
@@ -108,10 +113,22 @@ h2 {
 }
 
 #userForm {
+    position: fixed;
+    background-image: url('images/my_pantry.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
     width: 50%;
-    margin: 23em auto 0;
+    height: 100vh;
+    margin: auto 25%;
+}
+
+#form {
+    position: absolute;
+    width: 30%;
     text-align: center;
-    padding: 3px;
+    margin: 30em 35%;
 }
 
 
@@ -191,7 +208,7 @@ ul li {
 }
 
 #list {
-    width: 90%;
+    width: 80%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -205,3 +222,18 @@ ul li {
     flex: 0 1 auto; /* Default */
     margin:5px;
 }
+
+@media only screen and (max-width: 700px) {
+    #form {
+      margin-top: 27em;
+    }
+
+    .userinput {
+        width: 7em;
+    }
+
+    .submit {
+        padding: .5em 1em;
+        font-size: 0.7em;
+    }
+  }

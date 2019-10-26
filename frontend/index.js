@@ -1,5 +1,5 @@
-document.addEventListener('DOMContentLoaded', function(){
-    
+document.addEventListener('DOMContentLoaded', function () {
+
     const userForm = document.querySelector('#userForm')
     const ingredientForm = document.querySelector('#ingredientForm')
     let addIngredient = true;
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function(){
         newNotepad.style.backgroundColor="white"
         newNotepad.style.width="30%"
         newNotepad.style.height="400px;"
-        newNotepad.style.margin="2em auto 0"
+        newNotepad.style.margin="5em auto 0"
         newNotepad.style.paddingTop="1em"
 
         //Show Current Pantry
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function(){
                     method: "DELETE"
                 }).then(response => response.json())
                 .then(() => {
-                    ingredientLi.remove()
+                    ingredientUl.remove(ingredientLi);
                 })
             })
         })
@@ -133,12 +133,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
         getRecipesByIngredients(ingredArray.join(','));
 
-    }
+    // function findRecipes(allIngredients){
+    // console.log(allIngredients)
+    // allIngredients.forEach((ingredient) => {
+    //     console.log(ingredient.name)
+    // })
 
+    // }
 
     // ---- DISPLAY WITH SUMMARY ---- //
 
-    
+    }
 
     function getRecipesByIngredients(ingredients){
     
