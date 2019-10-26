@@ -163,15 +163,16 @@ h2 {
     font-size: 1em;
     padding: .75em 2em;
     border-radius: 0.5em;
-    background-color: greenyellow;
+    background-color: #dde16e;
     font-weight: bolder;
+    outline: none;
 }
 
 .recipe-card {
     margin: 1em 0 0;
     width: 250px;
     height: auto;
-    background-color: white;
+    background-color: #eae7dc;
     padding: 0.5em;
     align-items: center;
     align-content: center;
@@ -179,7 +180,7 @@ h2 {
 }
 
 .recipe-card:hover {
-    box-shadow: -1px 0px 11px -1px rgba(133,128,133,1);
+    box-shadow: -1px 0px 11px -1px;
 }
 
 
@@ -211,16 +212,15 @@ ul li {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
-    padding:5px;
     margin: 0 auto;
 }
 
 #list li {
     display: inline-block;
     flex: 0 1 auto; /* Default */
-    margin:5px;
+    margin: .7em;
 }
 
 @media only screen and (max-width: 700px) {

@@ -34,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     function addToPantryMode(data){
-
         document.body.style.background= 'url("images/backgroundBlackOnly.jpg")'
         document.body.style.backgroundSize= "100%"
         document.body.style.backgroundRepeat= "repeat-y"
@@ -59,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         hello.innerText=`Hello, ${data.user.name}!
         Add ingredients to your pantry!`
 
-        newNotepad.style.backgroundColor="white"
+        newNotepad.style.backgroundColor="#f6f7df"
         newNotepad.style.width="30%"
         newNotepad.style.height="400px;"
         newNotepad.style.margin="5em auto 0"
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 }
 
-    
     function displayIngredients(ingredient){
         let ingredientLi = document.createElement('li');
         ingredientLi.innerHTML = `${ingredient.name}<br>
@@ -123,8 +121,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-   
-
     function findRecipes(userIngredients){
         let ingredArray = [];
         userIngredients.forEach((ingredient) => {
@@ -132,17 +128,6 @@ document.addEventListener('DOMContentLoaded', function () {
         })
 
         getRecipesByIngredients(ingredArray.join(','));
-
-    // function findRecipes(allIngredients){
-    // console.log(allIngredients)
-    // allIngredients.forEach((ingredient) => {
-    //     console.log(ingredient.name)
-    // })
-
-    // }
-
-    // ---- DISPLAY WITH SUMMARY ---- //
-
     }
 
     function getRecipesByIngredients(ingredients){
@@ -174,24 +159,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         li.addEventListener('click', function(){
             let id = event.target.dataset.id;
-            //console.log(event.currentTarget)
         
             fetch(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=49ae92052caa4eea82ab19c49b424204`)
         .then(response => response.json())
         .then(details => renderDetails(details, li))
         })
     }
-    // function getSummarizeRecipe(id){
-        
-    // }
 
     function renderDetails(details, li){
-        console.log(details);
-        // divRecipeSummary.innerHTML =  `
-        // <h2>${details.title}</h2>
-        // <p>${details.summary}</p>
-        // <button>Save</button
-        // `
         let summary = document.createElement('p')
         summary.innerHTML= `${details.summary}`
         li.append(summary)
