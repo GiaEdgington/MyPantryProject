@@ -51,15 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             ingredientForm.style.display = "block"
         }
-
+        newNotepad.classList.add('addStyle');
         hello.innerText=`Hello, ${data.user.name}!
         Add ingredients to your pantry!`
-
-        newNotepad.style.backgroundColor="#f6f7df"
-        newNotepad.style.width="30%"
-        newNotepad.style.height="400px;"
-        newNotepad.style.margin="5em auto 0"
-        newNotepad.style.paddingTop="1em"
 
         //Show Current Pantry
         userIngredients = data.pantry
