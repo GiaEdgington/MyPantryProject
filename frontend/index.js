@@ -4,21 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const ingredientForm = document.querySelector('#ingredientForm')
     let addIngredient = true;
     let newUser = true;
-    const key = "cd04f587acb64ddbacddf0334d460a6c";
+    let userIngredients=[];
+    const key = "49ae92052caa4eea82ab19c49b424204";
     const ulOfRecipeTitles = document.querySelector('#list');
-    const divOfRecipeTitles = document.querySelector('#list-panel');
-    const divRecipeSummary = document.querySelector('#show-panel');
     const findRecipeButton = document.querySelector('#find-recipes');
     const ingredientUl = document.querySelector('#ingredientList');
     const hello = document.querySelector('.hello')
     const newNotepad = document.querySelector('.addIngredient')
     
+    //create user
     userForm.addEventListener('submit', function(){
-
         event.preventDefault();
-
         let userName = userForm.querySelector('input').value
-
         fetch("http://localhost:3000/users", {
             method: "POST",
             headers: {
@@ -65,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         newNotepad.style.paddingTop="1em"
 
         //Show Current Pantry
-        let userIngredients = data.pantry
+        userIngredients = data.pantry
 
         userIngredients.forEach((ingredient)=>{
             displayIngredients(ingredient)
@@ -75,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //Search Recipes Button
         findRecipeButton.addEventListener('click', function(){
-            findRecipes(userIngredients)
+            findRecipes();
         })
 
         //Add Ingredient Button
@@ -99,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 
     function displayIngredients(ingredient){
+        userIngredients.push(ingredient);
         let ingredientLi = document.createElement('li');
         ingredientLi.innerHTML = `${ingredient.name}<br>
         <input class="checkbox" type="checkbox">`
@@ -121,7 +119,8 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    function findRecipes(userIngredients){
+    function findRecipes(){
+        //console.log(userIngredients);
         let ingredArray = [];
         userIngredients.forEach((ingredient) => {
             ingredArray.push(ingredient.name)
@@ -132,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function getRecipesByIngredients(ingredients){
     
-        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=49ae92052caa4eea82ab19c49b424204&ingredients=${ingredients}`)
+        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${key}&ingredients=${ingredients}`)
         .then(response => response.json())
         .then(results => renderRecipeTitles(results))
     }
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
         li.addEventListener('click', function(){
             let id = event.target.dataset.id;
         
-            fetch(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=49ae92052caa4eea82ab19c49b424204`)
+            fetch(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${key}`)
         .then(response => response.json())
         .then(details => renderDetails(details, li))
         })
