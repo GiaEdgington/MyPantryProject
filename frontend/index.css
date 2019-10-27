@@ -129,7 +129,7 @@ h2 {
     position: absolute;
     width: 30%;
     text-align: center;
-    margin: 30em 35%;
+    margin: 35em 35% 0;
 }
 
 
@@ -182,7 +182,7 @@ h2 {
 }
 
 .recipe-card:hover {
-    box-shadow: -1px 0px 11px -1px;
+    box-shadow: -1px 0px 11px -1px #999999;
 }
 
 
@@ -225,15 +225,52 @@ ul li {
     margin: .7em;
 }
 
-@media only screen and (max-width: 700px) {
-    #form {
-      margin-top: 27em;
-    }
 
+@media only screen and (max-width: 768px) {
     .userinput {
-        width: 7em;
+        width: 8em;
     }
 
+    .submit {
+        padding: .5em 1em;
+        font-size: 0.7em;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    #form {
+        margin-top: 45em;
+    }
+    .userinput {
+        width: 12em;
+    }
+    .submit {
+        padding: .7em 2em;
+        font-size: 1em;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .userinput {
+        width: 8em;
+    }
+    .submit {
+        padding: .5em 1em;
+        font-size: 0.7em;
+    }
+  }
+
+  @media only screen and (max-width: 414px) {
+    #userForm {
+        width: 100%;
+        margin: auto 0;
+    }
+    #form {
+        margin-top: 25em;
+    }
+    .userinput {
+        width: 8em;
+    }
     .submit {
         padding: .5em 1em;
         font-size: 0.7em;
