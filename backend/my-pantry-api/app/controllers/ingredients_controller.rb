@@ -9,7 +9,7 @@ class IngredientsController < ApplicationController
         #Create record in DataBase
         
         @ingredient = Ingredient.create(ingredient_params)  
-        render json: { name: @ingredient.name }
+        render json: @ingredient
     end
 
     def show

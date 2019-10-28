@@ -4,21 +4,19 @@ document.addEventListener('DOMContentLoaded', function () {
     const ingredientForm = document.querySelector('#ingredientForm')
     let addIngredient = true;
     let newUser = true;
-    const key = "cd04f587acb64ddbacddf0334d460a6c";
+    let userIngredients=[];
+    const key = "49ae92052caa4eea82ab19c49b424204";
     const ulOfRecipeTitles = document.querySelector('#list');
-    const divOfRecipeTitles = document.querySelector('#list-panel');
-    const divRecipeSummary = document.querySelector('#show-panel');
     const findRecipeButton = document.querySelector('#find-recipes');
     const ingredientUl = document.querySelector('#ingredientList');
-    const hello = document.querySelector('.hello')
-    const newNotepad = document.querySelector('.addIngredient')
+    const hello = document.querySelector('.hello');
+    const newNotepad = document.querySelector('.addIngredient');
+    const deleteBtn = document.querySelector('.btnDelete');
     
+    //create user
     userForm.addEventListener('submit', function(){
-
         event.preventDefault();
-
         let userName = userForm.querySelector('input').value
-
         fetch("http://localhost:3000/users", {
             method: "POST",
             headers: {
@@ -34,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
     })
 
     function addToPantryMode(data){
-
         document.body.style.background= 'url("images/backgroundBlackOnly.jpg")'
         document.body.style.backgroundSize= "100%"
         document.body.style.backgroundRepeat= "repeat-y"
@@ -55,28 +52,22 @@ document.addEventListener('DOMContentLoaded', function () {
         } else {
             ingredientForm.style.display = "block"
         }
-
+        newNotepad.classList.add('addStyle');
         hello.innerText=`Hello, ${data.user.name}!
         Add ingredients to your pantry!`
 
-        newNotepad.style.backgroundColor="white"
-        newNotepad.style.width="30%"
-        newNotepad.style.height="400px;"
-        newNotepad.style.margin="5em auto 0"
-        newNotepad.style.paddingTop="1em"
-
         //Show Current Pantry
-        let userIngredients = data.pantry
+        userIngredients = data.pantry
 
         userIngredients.forEach((ingredient)=>{
-            displayIngredients(ingredient)
+            displayIngredient(ingredient)
         })
         const divButton = document.querySelector('#button-search')
         divButton.style.display = "block"
 
         //Search Recipes Button
         findRecipeButton.addEventListener('click', function(){
-            findRecipes(userIngredients)
+            findRecipes();
         })
 
         //Add Ingredient Button
@@ -95,59 +86,47 @@ document.addEventListener('DOMContentLoaded', function () {
                 user_id: data.user.id
             })
         }).then(response => response.json())
-        .then(data => displayIngredients(data));
+        .then(data => displayIngredient(data));
     })
 }
 
-    
-    function displayIngredients(ingredient){
-        let ingredientLi = document.createElement('li');
+    function displayIngredient(ingredient){
+        userIngredients.push(ingredient);
+        ingredientLi = document.createElement('li');
         ingredientLi.innerHTML = `${ingredient.name}<br>
-        <input class="checkbox" type="checkbox">`
+        <input id="${ingredient.id}" class="checkbox" type="checkbox">`
+
         ingredientUl.append(ingredientLi);
-
-        let checkedLi = ingredientLi.querySelector('.checkbox')
-        
-
-        checkedLi.addEventListener("change", function(){
-            let deleteBtn = document.querySelector('.btnDelete')
-            deleteBtn.addEventListener("click", function(){
-
-                fetch('http://localhost:3000/ingredients/' + ingredient.id, {
-                    method: "DELETE"
-                }).then(response => response.json())
-                .then(() => {
-                    ingredientUl.remove(ingredientLi);
-                })
-            })
-        })
     }
 
-   
+    deleteBtn.addEventListener("click", function(){
+        let inputIngredients = document.getElementsByClassName('checkbox');
+        for (let item of inputIngredients) {
+            if(item.checked == true){
 
-    function findRecipes(userIngredients){
+                fetch(`http://localhost:3000/ingredients/${item.id}`, {
+                method: 'DELETE'
+                }).then(response => {
+                    item.parentElement.remove();
+                });
+
+            }
+        };
+    })
+
+    function findRecipes(){
+        //console.log(userIngredients);
         let ingredArray = [];
         userIngredients.forEach((ingredient) => {
             ingredArray.push(ingredient.name)
         })
 
         getRecipesByIngredients(ingredArray.join(','));
-
-    // function findRecipes(allIngredients){
-    // console.log(allIngredients)
-    // allIngredients.forEach((ingredient) => {
-    //     console.log(ingredient.name)
-    // })
-
-    // }
-
-    // ---- DISPLAY WITH SUMMARY ---- //
-
     }
 
     function getRecipesByIngredients(ingredients){
     
-        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=49ae92052caa4eea82ab19c49b424204&ingredients=${ingredients}`)
+        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${key}&ingredients=${ingredients}`)
         .then(response => response.json())
         .then(results => renderRecipeTitles(results))
     }
@@ -174,24 +153,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
         li.addEventListener('click', function(){
             let id = event.target.dataset.id;
-            //console.log(event.currentTarget)
         
-            fetch(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=49ae92052caa4eea82ab19c49b424204`)
+            fetch(`https://api.spoonacular.com/recipes/${id}/summary?apiKey=${key}`)
         .then(response => response.json())
         .then(details => renderDetails(details, li))
         })
     }
-    // function getSummarizeRecipe(id){
-        
-    // }
 
     function renderDetails(details, li){
-        console.log(details);
-        // divRecipeSummary.innerHTML =  `
-        // <h2>${details.title}</h2>
-        // <p>${details.summary}</p>
-        // <button>Save</button
-        // `
         let summary = document.createElement('p')
         summary.innerHTML= `${details.summary}`
         li.append(summary)

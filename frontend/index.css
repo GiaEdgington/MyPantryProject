@@ -31,6 +31,14 @@ h2 {
     margin-top: 4em;
 }
 
+.addStyle {
+    background-color: #f6f7df;
+    width: 40%;
+    height: 400px;
+    margin: 5em auto 0;
+    padding-top: 1em;
+}
+
 .userinput {
     width: 12em;
     height: 2em;
@@ -39,6 +47,7 @@ h2 {
     border-style: solid;
     font-size: 80%;
     text-align: center;
+    outline: none;
 }
 
 .checkbox {
@@ -76,6 +85,7 @@ h2 {
     padding: 0.5em 1em;
     font-size: .85em;
     border-radius: 0.35em;
+    outline: none;
 }
 
 /* .submit:hover{
@@ -128,7 +138,7 @@ h2 {
     position: absolute;
     width: 30%;
     text-align: center;
-    margin: 30em 35%;
+    margin: 35em 35% 0;
 }
 
 
@@ -141,8 +151,9 @@ h2 {
 
 .btnDelete {
     float: right;
-    padding: 3px;
-    margin-top: 1em;
+    padding: 0.7em 1em;
+    margin-top: 3em;
+    margin-right: -1em;
 }
 
 #my-pantry{
@@ -163,15 +174,17 @@ h2 {
     font-size: 1em;
     padding: .75em 2em;
     border-radius: 0.5em;
-    background-color: greenyellow;
+    background-color: #dde16e;
     font-weight: bolder;
+    color: #595d4a;
+    outline: none;
 }
 
 .recipe-card {
     margin: 1em 0 0;
     width: 250px;
     height: auto;
-    background-color: white;
+    background-color: #eae7dc;
     padding: 0.5em;
     align-items: center;
     align-content: center;
@@ -179,7 +192,7 @@ h2 {
 }
 
 .recipe-card:hover {
-    box-shadow: -1px 0px 11px -1px rgba(133,128,133,1);
+    box-shadow: -1px 0px 11px -1px #999999;
 }
 
 
@@ -211,29 +224,77 @@ ul li {
     width: 80%;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding:5px;
     margin: 0 auto;
 }
 
 #list li {
     display: inline-block;
     flex: 0 1 auto; /* Default */
-    margin:5px;
+    margin: .7em;
 }
 
-@media only screen and (max-width: 700px) {
-    #form {
-      margin-top: 27em;
-    }
 
+@media only screen and (max-width: 768px) {
     .userinput {
-        width: 7em;
+        width: 8em;
     }
 
     .submit {
         padding: .5em 1em;
         font-size: 0.7em;
+    }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    #form {
+        margin-top: 45em;
+    }
+    .userinput {
+        width: 12em;
+    }
+    .submit {
+        padding: .7em 2em;
+        font-size: 1em;
+    }
+    .addStyle {
+        width: 75%;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    #form {
+        margin-top: 35em;
+    }
+    .userinput {
+        width: 8em;
+    }
+    .submit {
+        padding: .5em 1em;
+        font-size: 0.7em;
+    }
+    .addStyle {
+        width: 60%;
+    }
+  }
+
+  @media only screen and (max-width: 414px) {
+    #userForm {
+        width: 100%;
+        margin: auto 0;
+    }
+    #form {
+        margin-top: 25em;
+    }
+    .userinput {
+        width: 8em;
+    }
+    .submit {
+        padding: .5em 1em;
+        font-size: 0.7em;
+    }
+    .addStyle {
+        width: 80%;
     }
   }
