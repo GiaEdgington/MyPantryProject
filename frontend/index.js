@@ -9,8 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const ulOfRecipeTitles = document.querySelector('#list');
     const findRecipeButton = document.querySelector('#find-recipes');
     const ingredientUl = document.querySelector('#ingredientList');
-    const hello = document.querySelector('.hello')
-    const newNotepad = document.querySelector('.addIngredient')
+    const hello = document.querySelector('.hello');
+    const newNotepad = document.querySelector('.addIngredient');
+    const deleteBtn = document.querySelector('.btnDelete');
     
     //create user
     userForm.addEventListener('submit', function(){
@@ -59,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         userIngredients = data.pantry
 
         userIngredients.forEach((ingredient)=>{
-            displayIngredients(ingredient)
+            displayIngredient(ingredient)
         })
         const divButton = document.querySelector('#button-search')
         divButton.style.display = "block"
@@ -85,33 +86,33 @@ document.addEventListener('DOMContentLoaded', function () {
                 user_id: data.user.id
             })
         }).then(response => response.json())
-        .then(data => displayIngredients(data));
+        .then(data => displayIngredient(data));
     })
 }
 
-    function displayIngredients(ingredient){
+    function displayIngredient(ingredient){
         userIngredients.push(ingredient);
-        let ingredientLi = document.createElement('li');
+        ingredientLi = document.createElement('li');
         ingredientLi.innerHTML = `${ingredient.name}<br>
-        <input class="checkbox" type="checkbox">`
+        <input id="${ingredient.id}" class="checkbox" type="checkbox">`
+
         ingredientUl.append(ingredientLi);
-
-        let checkedLi = ingredientLi.querySelector('.checkbox')
-        
-
-        checkedLi.addEventListener("change", function(){
-            let deleteBtn = document.querySelector('.btnDelete')
-            deleteBtn.addEventListener("click", function(){
-
-                fetch('http://localhost:3000/ingredients/' + ingredient.id, {
-                    method: "DELETE"
-                }).then(response => response.json())
-                .then(() => {
-                    ingredientUl.remove(ingredientLi);
-                })
-            })
-        })
     }
+
+    deleteBtn.addEventListener("click", function(){
+        let inputIngredients = document.getElementsByClassName('checkbox');
+        for (let item of inputIngredients) {
+            if(item.checked == true){
+
+                fetch(`http://localhost:3000/ingredients/${item.id}`, {
+                method: 'DELETE'
+                }).then(response => {
+                    item.parentElement.remove();
+                });
+
+            }
+        };
+    })
 
     function findRecipes(){
         //console.log(userIngredients);

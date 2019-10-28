@@ -33,7 +33,7 @@ h2 {
 
 .addStyle {
     background-color: #f6f7df;
-    width: 30%;
+    width: 40%;
     height: 400px;
     margin: 5em auto 0;
     padding-top: 1em;
@@ -85,6 +85,7 @@ h2 {
     padding: 0.5em 1em;
     font-size: .85em;
     border-radius: 0.35em;
+    outline: none;
 }
 
 /* .submit:hover{
@@ -256,6 +257,9 @@ ul li {
         padding: .7em 2em;
         font-size: 1em;
     }
+    .addStyle {
+        width: 75%;
+    }
   }
 
   @media only screen and (max-width: 768px) {
@@ -268,6 +272,9 @@ ul li {
     .submit {
         padding: .5em 1em;
         font-size: 0.7em;
+    }
+    .addStyle {
+        width: 60%;
     }
   }
 
@@ -285,5 +292,8 @@ ul li {
     .submit {
         padding: .5em 1em;
         font-size: 0.7em;
+    }
+    .addStyle {
+        width: 80%;
     }
   }
