@@ -151,8 +151,9 @@ h2 {
 
 .btnDelete {
     float: right;
-    padding: 3px;
-    margin-top: 1em;
+    padding: 0.7em 1em;
+    margin-top: 3em;
+    margin-right: -1em;
 }
 
 #my-pantry{
